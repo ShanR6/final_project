@@ -1,2 +1,1 @@
-Sergey Pidor
 
