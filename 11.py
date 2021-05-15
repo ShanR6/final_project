@@ -3,6 +3,7 @@ from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
+
 def circle_func(x_centre_point, # х-координата центральной точки окружности
                 y_centre_point, # у-координата центральной точки окружности
                 R):
@@ -31,7 +32,11 @@ def move_func(s, t):
 # Определяем начальные значения и параметры, входящие в систему диф. уравнений
 N = 2000
 T = 30
-radius = 1
+radius = 0.25
+
+
+G = 6.67 * 10**(-11)
+m = 10**30
 
 x0 = 2.5
 v_x0 = 1
@@ -71,8 +76,12 @@ for i in range(N-1):
     y0 = sol[1, 1]
     vx0 = sol[1, 2]
     vy0 = sol[1, 3]
-    if ((np.abs(x0-X0) <= radius or np.abs(x0-X1) <= radius) and (np.abs(y0-Y5) or np.abs(y0-Y4)) or (np.abs(x0-X1) or np.abs(x0-X2) and (np.abs(y0-Y4) or np.abs(y0-Y3))) or (np.abs(x0-X2) or np.abs(x0-X3) and (np.abs(y0-Y3) or np.abs(y0-Y2))) or (np.abs(x0-X3) or np.abs(x0-X4) and (np.abs(y0-Y2) or np.abs(y0-Y1))) or (np.abs(x0-X4) or np.abs(x0-X5) and (np.abs(y0-Y1) or np.abs(y0-Y0)))):
+    if ((np.abs(y0-Y4) <= radius and (np.abs(x0-X0) <= radius or np.abs(x0-X1) <= radius)) or (np.abs(y0-Y3) <= radius and (np.abs(x0-X1) <= radius or np.abs(x0-X2) <= radius)) or (np.abs(y0-Y2) <= radius and (np.abs(x0-X2) <= radius or np.abs(x0-X3) <= radius)) or (np.abs(y0-Y1) <= radius and (np.abs(x0-X3) <= radius or np.abs(x0-X4) <= radius )) or (np.abs(y0-Y0) <= radius and (np.abs(x0-X4) <= radius or np.abs(x0-X5) <= radius))):
+        vy0 = -vy0
         vx0 = -vx0
+    if np.abs(x0-X0) <= radius or np.abs(x0-X5) <= radius:
+        vx0 = -vx0
+    if np.abs(y0-Y0) <= radius or np.abs(y0-Y5) <= radius:
         vy0 = -vy0
     s0 = x0, y0, vx0, vy0
 
