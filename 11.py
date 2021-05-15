@@ -71,9 +71,8 @@ for i in range(N-1):
     y0 = sol[1, 1]
     vx0 = sol[1, 2]
     vy0 = sol[1, 3]
-    if (np.abs(x0-X0)(y0-y4) <= radius or np.abs(x0-X1) <= radius) and (np.abs(x0-X1) <= radius or np.abs(x0-X2) <= radius) and (np.abs(x0-X2) <= radius or np.abs(x0-X3) <= radius) and (np.abs(x0-X3) <= radius or np.abs(x0-X4) <= radius) and (np.abs(x0-X4) <= radius or np.abs(x0-X5) <= radius):
+    if ((np.abs(x0-X0) <= radius or np.abs(x0-X1) <= radius) and (np.abs(y0-Y5) or np.abs(y0-Y4)) or (np.abs(x0-X1) or np.abs(x0-X2) and (np.abs(y0-Y4) or np.abs(y0-Y3))) or (np.abs(x0-X2) or np.abs(x0-X3) and (np.abs(y0-Y3) or np.abs(y0-Y2))) or (np.abs(x0-X3) or np.abs(x0-X4) and (np.abs(y0-Y2) or np.abs(y0-Y1))) or (np.abs(x0-X4) or np.abs(x0-X5) and (np.abs(y0-Y1) or np.abs(y0-Y0)))):
         vx0 = -vx0
-    if np.abs(y0-Y0) <= radius or np.abs(y0-Y5) <= radius:
         vy0 = -vy0
     s0 = x0, y0, vx0, vy0
 
@@ -82,17 +81,17 @@ for i in range(N-1):
 fig, ax = plt.subplots()
 plt.xlim([0, 20])
 plt.ylim([0, 20])
-plt.plot([X0, X0],[Y5, Y4],color='b')
-plt.plot([X0, X1],[Y4, Y4],color='b')
-plt.plot([X1, X1],[Y4, Y3],color='b')
-plt.plot([X1, X2],[Y3, Y3],color='b')
-plt.plot([X2, X2],[Y3, Y2],color='b')
-plt.plot([X2, X3],[Y2, Y2],color='b')
-plt.plot([X3, X3],[Y2, Y1],color='b')
-plt.plot([X3, X4],[Y1, Y1],color='b')
-plt.plot([X4, X4],[Y1, Y0],color='b')
-plt.plot([X4, X5],[Y0, Y0],color='b')
-ball1, = plt.plot([], [], 'o', color='r', ms=1)
+plt.plot([X0, X0],[Y5, Y4],color='sienna')
+plt.plot([X0, X1],[Y4, Y4],color='sienna')
+plt.plot([X1, X1],[Y4, Y3],color='sienna')
+plt.plot([X1, X2],[Y3, Y3],color='sienna')
+plt.plot([X2, X2],[Y3, Y2],color='sienna')
+plt.plot([X2, X3],[Y2, Y2],color='sienna')
+plt.plot([X3, X3],[Y2, Y1],color='sienna')
+plt.plot([X3, X4],[Y1, Y1],color='sienna')
+plt.plot([X4, X4],[Y1, Y0],color='sienna')
+plt.plot([X4, X5],[Y0, Y0],color='sienna')
+ball1, = plt.plot([], [], 'o', color='m', ms=1)
 
 def animate(i):
     ball1.set_data(circle_func(X[i], Y[i], radius))
