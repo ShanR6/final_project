@@ -26,7 +26,7 @@ def move_func(s, t):
     dxdt = v_x
     dv_xdt = 0
     dydt = v_y
-    dv_ydt = 0
+    dv_ydt = - g
 
     return dxdt, dydt, dv_xdt, dv_ydt
 
@@ -36,13 +36,13 @@ N = 2000
 T = 30
 radius = 0.25
 
-G = 6.67 * 10 ** (-11)
+g = 9.81
 m = 10 ** 30
 
-x0 = 2.5
-v_x0 = 1
-y0 = 4
-v_y0 = 6.3
+x0 = 0.5
+v_x0 = 0
+y0 = 4.5
+v_y0 = 0
 s0 = x0, y0, v_x0, v_y0
 
 X = []
